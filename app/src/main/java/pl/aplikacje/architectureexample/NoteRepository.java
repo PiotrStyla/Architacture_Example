@@ -1,4 +1,4 @@
-package pl.aplikacje.architactureexample;
+package pl.aplikacje.architectureexample;
 
 import android.app.Application;
 import android.os.AsyncTask;

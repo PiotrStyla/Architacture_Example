@@ -1,4 +1,4 @@
-package pl.aplikacje.architactureexample;
+package pl.aplikacje.architectureexample;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

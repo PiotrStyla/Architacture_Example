@@ -1,9 +1,8 @@
-package pl.aplikacje.architactureexample;
+package pl.aplikacje.architectureexample;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<Note> notes) {
                 //update RecyclerView
-                Toast.makeText(MainActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "onChanged", Toast.LENGTH_LONG).show();
             }
         });
     }
