@@ -2,6 +2,7 @@ package pl.aplikacje.architectureexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +16,13 @@ public class AddNoteActivity extends AppCompatActivity {
     private EditText editTextTitle;
     private EditText editTextDescription;
     private NumberPicker numberPickerPriority;
+
+    public static final String EXTRA_TITLE =
+            "pl.aplikacje.architectureexample.EXTRA_TITLE";
+    public static final String EXTRA_DESCRIPTION =
+            "pl.aplikacje.architectureexample.EXTRA_DESCRIPTION";
+    public static final String EXTRA_PRIORITY =
+            "pl.aplikacje.architectureexample.EXTRA_PRIORITY";
 
 
     @Override
@@ -42,6 +50,15 @@ public class AddNoteActivity extends AppCompatActivity {
         if(title.trim().isEmpty() || descripton.trim().isEmpty()){
             Toast.makeText(this,"P", Toast.LENGTH_SHORT).show();
         }
+
+        Intent data = new Intent();
+        data.putExtra(EXTRA_TITLE, title);
+        data.putExtra(EXTRA_DESCRIPTION, title);
+        data.putExtra(EXTRA_PRIORITY, priority);
+
+        setResult(RESULT_OK, data);
+        finish();
+
     }
 
     @Override
