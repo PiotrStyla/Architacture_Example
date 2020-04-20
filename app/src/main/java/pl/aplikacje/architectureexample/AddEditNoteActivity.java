@@ -11,12 +11,14 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
-public class AddNoteActivity extends AppCompatActivity {
+public class AddEditNoteActivity extends AppCompatActivity {
 
     private EditText editTextTitle;
     private EditText editTextDescription;
     private NumberPicker numberPickerPriority;
 
+    public static final String EXTRA_ID =
+            "pl.aplikacje.architectureexample.EXTRA_ID";
     public static final String EXTRA_TITLE =
             "pl.aplikacje.architectureexample.EXTRA_TITLE";
     public static final String EXTRA_DESCRIPTION =

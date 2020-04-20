@@ -6,7 +6,7 @@
     android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pl.aplikacje.architectureexample.AddNoteActivity">
+    tools:context="pl.aplikacje.architectureexample.AddEditNoteActivity">
 
     <EditText
         android:id="@+id/edit_text_title"
