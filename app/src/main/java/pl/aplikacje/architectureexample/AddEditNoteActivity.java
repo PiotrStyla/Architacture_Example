@@ -40,6 +40,22 @@ public class AddEditNoteActivity extends AppCompatActivity {
         numberPickerPriority.setMaxValue(10);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+
+        Intent intent = getIntent();
+
+        if (intent.hasExtra(EXTRA_ID)){
+
+            setTitle("Edit note");
+            editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
+            editTextDescription.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
+            numberPickerPriority.setMaxValue(intent.getIntExtra(EXTRA_PRIORITY, 1));
+
+        } else{
+
+            setTitle("Add note");
+        }
+
+
         setTitle("Add Note");
 
     }
