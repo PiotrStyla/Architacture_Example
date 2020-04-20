@@ -12,19 +12,18 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 public class AddEditNoteActivity extends AppCompatActivity {
+    public static final String EXTRA_ID =
+            "com.codinginflow.architectureexample.EXTRA_ID";
+    public static final String EXTRA_TITLE =
+            "com.codinginflow.architectureexample.EXTRA_TITLE";
+    public static final String EXTRA_DESCRIPTION =
+            "com.codinginflow.architectureexample.EXTRA_DESCRIPTION";
+    public static final String EXTRA_PRIORITY =
+            "com.codinginflow.architectureexample.EXTRA_PRIORITY";
 
     private EditText editTextTitle;
     private EditText editTextDescription;
     private NumberPicker numberPickerPriority;
-
-    public static final String EXTRA_ID =
-            "pl.aplikacje.architectureexample.EXTRA_ID";
-    public static final String EXTRA_TITLE =
-            "pl.aplikacje.architectureexample.EXTRA_TITLE";
-    public static final String EXTRA_DESCRIPTION =
-            "pl.aplikacje.architectureexample.EXTRA_DESCRIPTION";
-    public static final String EXTRA_PRIORITY =
-            "pl.aplikacje.architectureexample.EXTRA_PRIORITY";
 
 
     @Override
@@ -43,54 +42,44 @@ public class AddEditNoteActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        if (intent.hasExtra(EXTRA_ID)){
-
-            setTitle("Edit note");
+        if (intent.hasExtra(EXTRA_ID)) {
+            setTitle("Edit Note");
             editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
             editTextDescription.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
-            numberPickerPriority.setMaxValue(intent.getIntExtra(EXTRA_PRIORITY, 1));
-
-        } else{
-
-            setTitle("Add note");
+            numberPickerPriority.setValue(intent.getIntExtra(EXTRA_PRIORITY, 1));
+        } else {
+            setTitle("Add Note");
         }
-
-
-        setTitle("Add Note");
-
     }
 
-    private void saveNote(){
+    private void saveNote() {
         String title = editTextTitle.getText().toString();
-        String descripton = editTextDescription.getText().toString();
+        String description = editTextDescription.getText().toString();
         int priority = numberPickerPriority.getValue();
 
-        if(title.trim().isEmpty() || descripton.trim().isEmpty()){
-            Toast.makeText(this,"P", Toast.LENGTH_SHORT).show();
+        if (title.trim().isEmpty() || description.trim().isEmpty()) {
+            Toast.makeText(this, "Please insert a title and description", Toast.LENGTH_SHORT).show();
+            return;
         }
 
         Intent data = new Intent();
         data.putExtra(EXTRA_TITLE, title);
-        data.putExtra(EXTRA_DESCRIPTION, title);
+        data.putExtra(EXTRA_DESCRIPTION, description);
         data.putExtra(EXTRA_PRIORITY, priority);
 
         int id = getIntent().getIntExtra(EXTRA_ID, -1);
-        if(id !=-1){
-            data.putExtra(EXTRA_ID,id);
+        if (id != -1) {
+            data.putExtra(EXTRA_ID, id);
         }
-
 
         setResult(RESULT_OK, data);
         finish();
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.add_note_menu, menu);
-
         return true;
     }
 
@@ -102,8 +91,6 @@ public class AddEditNoteActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-
         }
-
     }
 }
